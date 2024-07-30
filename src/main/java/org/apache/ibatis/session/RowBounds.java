@@ -16,15 +16,28 @@
 package org.apache.ibatis.session;
 
 /**
- * @author Clinton Begin
+ * 简单的分页和结果集限制的工具类
+ * RowBounds在内存中进行分页，可能导致性能问题，特别是当数据量非常大时。
+ * 对于大数据量分页，建议在SQL语句中使用分页语法
+ * 可以使用MyBatis的分页插件（如PageHelper）来更好地支持分页查询
  */
 public class RowBounds {
 
   public static final int NO_ROW_OFFSET = 0;
   public static final int NO_ROW_LIMIT = Integer.MAX_VALUE;
+  /**
+   * RowBounds 默认值
+   * offset   0
+   * limit    Integer.MAX_VALUE
+   */
   public static final RowBounds DEFAULT = new RowBounds();
-
+  /**
+   * 偏移量
+   */
   private final int offset;
+  /**
+   * 限制条数
+   */
   private final int limit;
 
   public RowBounds() {
