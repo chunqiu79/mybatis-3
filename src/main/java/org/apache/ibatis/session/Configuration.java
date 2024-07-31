@@ -657,7 +657,7 @@ public class Configuration {
     } else {
       executor = new SimpleExecutor(this, transaction);
     }
-    // 缓存默认开启
+    // 二级缓存默认开启
     if (cacheEnabled) {
       // 包装成 CachingExecutor
       executor = new CachingExecutor(executor);

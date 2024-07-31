@@ -29,8 +29,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * @author Clinton Begin
- * @author Eduardo Macarron
+ * CachingExecutor    这个其实就是二级缓存
+ * 如果想要真的生效，必须在对应的 mapper.xml 文件里面加上<cache />标签
  */
 public class CachingExecutor implements Executor {
 

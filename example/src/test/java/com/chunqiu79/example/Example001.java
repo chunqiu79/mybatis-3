@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * @author: chunqiu79
@@ -17,6 +18,10 @@ import java.io.InputStream;
  */
 public class Example001 {
   public static void main(String[] args) throws IOException {
+    selectList();
+  }
+
+  private static void selectOne() throws IOException {
     InputStream stream = Resources.getResourceAsStream("mybatis-config.xml");
     SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(stream);
     SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -24,5 +29,16 @@ public class Example001 {
     User user = mapper.selectByPrimaryKey(1L);
     System.out.println("user:" + user);
   }
+
+  private static void selectList() throws IOException {
+    InputStream stream = Resources.getResourceAsStream("mybatis-config.xml");
+    SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(stream);
+    SqlSession sqlSession = sqlSessionFactory.openSession();
+    UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+    List<User> userList = mapper.selectAll();
+    System.out.println("userList:" + userList.toString());
+  }
+
+
 
 }

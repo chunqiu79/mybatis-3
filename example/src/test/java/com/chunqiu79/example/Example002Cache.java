@@ -42,7 +42,7 @@ public class Example002Cache {
     User user = mapper.selectByPrimaryKey(1L);
     System.out.println("user:" + user);
 
-    // 2次查询中间添加修改逻辑
+    // 2次查询中间添加修改逻辑   这里会清空缓存
     user.setAmount(user.getAmount());
     mapper.updateByPrimaryKey(user);
 

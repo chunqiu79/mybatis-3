@@ -72,7 +72,8 @@ public class DefaultSqlSession implements SqlSession {
 
   @Override
   public <T> T selectOne(String statement, Object parameter) {
-    // Popular vote was to return null on 0 results and throw exception on too many.
+    // 这里可以看出来selectOne其实最后还是调用selectList，只是最后只返回1个而已
+    // 所以如果已知只会返回1条的时候等情况，sql语句中直接写limit
     List<T> list = this.selectList(statement, parameter);
     if (list.size() == 1) {
       return list.get(0);
@@ -142,6 +143,7 @@ public class DefaultSqlSession implements SqlSession {
 
   @Override
   public <E> List<E> selectList(String statement, Object parameter, RowBounds rowBounds) {
+    // ResultHandler 设置的是 Executor.NO_RESULT_HANDLER ，也就是 null
     return selectList(statement, parameter, rowBounds, Executor.NO_RESULT_HANDLER);
   }
 
