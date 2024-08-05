@@ -1,6 +1,6 @@
-package com.chunqiu79.example.table.mapper;
+package com.chunqiu79.manual.table.mapper;
 
-import com.chunqiu79.example.table.entity.User;
+import com.chunqiu79.manual.table.entity.User;
 
 import java.util.List;
 
